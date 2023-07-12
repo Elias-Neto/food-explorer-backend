@@ -1,0 +1,22 @@
+exports.up = knex => {
+  return (
+    knex.schema.createTable("purchases", table => {
+      table.increments("id").primary()
+
+      table
+        .integer("user_id")
+        .references("id")
+        .inTable("users").
+        onDelete("CASCADE").
+        notNullable()
+
+      table.text("details").notNullable()
+      table.text("status").defaultTo("pending")
+
+      table.timestamp("created_at").defaultTo(knex.fn.now())
+      table.timestamp("updated_at").defaultTo(knex.fn.now())
+    })
+  )
+}
+
+exports.down = knex => knex.schema.dropTable("purchases")

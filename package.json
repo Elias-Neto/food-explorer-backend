@@ -1,18 +1,22 @@
 {
-  "name": "Food Explorer API",
+  "name": "food-explorer-api",
   "description": "API do Food Explorer, um cardápio interativo para restaurantes.",
   "version": "1.0.0",
   "author": "Elias Neto",
   "license": "MIT",
   "main": "./src/server.js",
   "scripts": {
-    "dev": "nodemon ./src/server.js"
+    "dev": "nodemon ./src/server.js",
+    "migrate": "knex migrate:latest"
   },
   "devDependencies": {
     "nodemon": "^3.0.0"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "express-async-errors": "^3.1.1"
+    "express-async-errors": "^3.1.1",
+    "knex": "^2.5.0",
+    "sqlite": "^5.0.1",
+    "sqlite3": "^5.1.6"
   }
 }
