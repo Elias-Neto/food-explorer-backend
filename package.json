@@ -7,12 +7,15 @@
   "main": "./src/server.js",
   "scripts": {
     "dev": "nodemon ./src/server.js",
-    "migrate": "knex migrate:latest"
+    "migrate": "knex migrate:latest",
+    "test": "jest"
   },
   "devDependencies": {
+    "jest": "^29.6.1",
     "nodemon": "^3.0.0"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
     "knex": "^2.5.0",

@@ -7,7 +7,7 @@ exports.up = knex => {
       table.text("email").notNullable()
       table.text("password").notNullable()
 
-      table.boolean("admin").notNullable().defaultTo(false)
+      table.integer('isAdmin').defaultTo(0)
     })
   )
 }
