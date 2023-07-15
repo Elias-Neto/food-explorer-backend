@@ -11,7 +11,6 @@ class UserCreateService {
       throw new AppError("Informe todos os campos.")
     }
 
-
     if (password.length < 6) {
       throw new AppError("A senha deve ter no mínimo 6 caracteres.")
     }

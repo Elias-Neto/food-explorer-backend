@@ -11,7 +11,7 @@ describe("UserCreateService", () => {
     userCreateService = new UserCreateService(userRepositoryInMemory)
   })
 
-  it("user should be create", async () => {
+  it("User should be create", async () => {
     const user = {
       name: "User Test",
       email: "user@teste.com",
@@ -23,7 +23,7 @@ describe("UserCreateService", () => {
     expect(userCreated).toHaveProperty("id")
   })
 
-  it("user not should be create with some field null", async () => {
+  it("User not should be create with some field null", async () => {
     const user = {
       // name: "User Test",
       email: "user@teste.com",
@@ -35,7 +35,7 @@ describe("UserCreateService", () => {
     )
   })
 
-  it("user not should be create with password less than 6 characters", async () => {
+  it("User not should be create with password less than 6 characters", async () => {
     const user = {
       name: "User Test",
       email: "user@teste.com",
@@ -47,7 +47,7 @@ describe("UserCreateService", () => {
     )
   })
 
-  it("user not should be create with exists email", async () => {
+  it("User not should be create with exists email", async () => {
     const user1 = {
       name: "User Test One",
       email: "user@teste.com",
