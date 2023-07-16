@@ -1,6 +1,6 @@
 exports.up = knex => {
   return (
-    knex.schema.createTable("requests", table => {
+    knex.schema.createTable("orders", table => {
       table.increments("id").primary()
 
       table
@@ -21,4 +21,4 @@ exports.up = knex => {
   )
 }
 
-exports.down = knex => knex.schema.dropTable("requests")
+exports.down = knex => knex.schema.dropTable("orders")
