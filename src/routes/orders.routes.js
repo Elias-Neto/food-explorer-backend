@@ -10,7 +10,8 @@ const ordersRouter = Router()
 ordersRouter.use(ensureAuthenticated)
 
 ordersRouter.get("/", ordersController.index)
-ordersRouter.put("/:orderID", ordersController.update)
 ordersRouter.post("/", ordersController.create)
+ordersRouter.put("/:orderID", ordersController.update)
+ordersRouter.delete("/:orderID", ordersController.delete)
 
 module.exports = ordersRouter

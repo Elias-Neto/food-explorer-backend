@@ -60,6 +60,10 @@ class OrdersRepositoryInMemory {
 
     return await this.findByID(orderID)
   }
+
+  async delete(orderID) {
+    this.orders = this.orders.filter((order) => order.id !== orderID)
+  }
 }
 
 module.exports = OrdersRepositoryInMemory

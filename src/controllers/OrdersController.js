@@ -2,6 +2,7 @@ const OrdersRepository = require("../repositories/orders/OrdersRepository")
 const OrdersIndexService = require("../services/orders/OrdersIndexService")
 const OrdersCreateService = require("../services/orders/OrdersCreateService")
 const OrdersUpdateService = require("../services/orders/OrdersUpdateService")
+const OrdersDeleteService = require("../services/orders/OrdersDeleteService")
 
 class OrdersController {
   // ordersRepository = new OrdersRepository()
@@ -43,6 +44,17 @@ class OrdersController {
     const order = await ordersUpdateService.execute(Number(orderID), quantity)
 
     return response.json(order)
+  }
+
+  async delete(request, response) {
+    const { orderID } = request.params
+
+    const ordersRepository = new OrdersRepository()
+    const ordersDeleteService = new OrdersDeleteService(ordersRepository)
+
+    await ordersDeleteService.execute(Number(orderID))
+
+    return response.status(204).json()
   }
 }
 

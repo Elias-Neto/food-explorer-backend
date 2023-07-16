@@ -38,6 +38,10 @@ class OrdersRepository {
 
     return this.findByID(order.id)
   }
+
+  async delete(orderID) {
+    await knex("orders").where({ id: orderID }).delete()
+  }
 }
 
 module.exports = OrdersRepository
