@@ -28,6 +28,16 @@ class OrdersRepository {
 
     return orders
   }
+
+  async update(orderID, quantity) {
+    const order = await this.findByID(orderID)
+
+    const orderUpdated = { ...order, quantity }
+
+    await knex("orders").where({ id: order.id }).update(orderUpdated)
+
+    return this.findByID(order.id)
+  }
 }
 
 module.exports = OrdersRepository

@@ -25,7 +25,7 @@ class OrdersRepositoryInMemory {
 
     this.orders.push(insertOrder)
 
-    return this.findByID(insertOrder.id)
+    return await this.findByID(insertOrder.id)
   }
 
   async findByUserID(userID) {
@@ -45,6 +45,20 @@ class OrdersRepositoryInMemory {
     })
 
     return ordersWithDishes
+  }
+
+  async update(orderID, quantity) {
+    const order = await this.findByID(orderID)
+
+    const ordersUpdated = this.orders.map((arrayOrder) => {
+      if (arrayOrder.id === orderID) {
+        return { ...order, quantity }
+      }
+    })
+
+    this.orders = ordersUpdated
+
+    return await this.findByID(orderID)
   }
 }
 

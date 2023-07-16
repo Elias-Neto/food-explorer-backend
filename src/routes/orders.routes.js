@@ -10,6 +10,7 @@ const ordersRouter = Router()
 ordersRouter.use(ensureAuthenticated)
 
 ordersRouter.get("/", ordersController.index)
+ordersRouter.put("/:orderID", ordersController.update)
 ordersRouter.post("/", ordersController.create)
 
 module.exports = ordersRouter
