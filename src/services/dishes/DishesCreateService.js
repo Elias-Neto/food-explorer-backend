@@ -11,8 +11,6 @@ class DishesCreateService {
       throw new AppError("Informe todos os campos obrigatórios.")
     }
 
-    ingredients = ingredients ?? []
-
     const dish = await this.dishesRepository.insert({
       name,
       category,

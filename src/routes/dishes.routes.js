@@ -10,5 +10,6 @@ const router = Router()
 router.use(ensureAuthenticated)
 
 router.post("/", dishesController.create)
+router.get("/", dishesController.index)
 
 module.exports = router

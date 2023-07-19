@@ -1,4 +1,5 @@
 const DishesRepository = require("../repositories/dishes/DishesRepository")
+const DishesIndexService = require("../services/dishes/DishesIndexService")
 const DishesCreateService = require("../services/dishes/DishesCreateService")
 const IngredientsRepository = require("../repositories/ingredients/IngredientsRepository")
 
@@ -19,6 +20,17 @@ class DishesController {
     })
 
     return response.status(201).json(dish)
+  }
+
+  async index(request, response) {
+    const { search } = request.query
+
+    const dishesRepository = new DishesRepository()
+    const dishesIndexService = new DishesIndexService(dishesRepository)
+
+    const dishes = await dishesIndexService.execute(search)
+
+    return response.json(dishes)
   }
 }
 

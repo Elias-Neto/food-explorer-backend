@@ -12,6 +12,18 @@ class DishesRepository {
 
     return this.findByID(id)
   }
+
+  async findAll(search) {
+    const dishes = await knex
+      .select('d.*')
+      .from('dishes as d')
+      .join('ingredients as i', 'd.id', 'i.dish_id')
+      .whereLike('d.name', `%${search}%`)
+      .orWhereLike('i.name', `%${search}%`)
+      .groupBy('d.id')
+
+    return dishes
+  }
 }
 
 module.exports = DishesRepository
