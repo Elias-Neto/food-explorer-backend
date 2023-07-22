@@ -1,7 +1,7 @@
 const DishesIndexService = require("./DishesIndexService")
 const DishesRepositoryInMemory = require("../../repositories/dishes/DishesRepositoryInMemory")
 
-describe.only("DishesIndexService", () => {
+describe("DishesIndexService", () => {
   let dishesIndexService
   let dishesRepositoryInMemory
 

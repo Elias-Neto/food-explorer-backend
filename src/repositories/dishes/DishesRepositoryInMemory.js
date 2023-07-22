@@ -1,6 +1,7 @@
 class DishesRepositoryInMemory {
   dishes = [
     {
+      id: 1,
       name: "Salada Example",
       category: "salad",
       price: 10,
@@ -8,6 +9,7 @@ class DishesRepositoryInMemory {
       ingredients: ["Ingredient One 1", "Ingredient Two 1"]
     },
     {
+      id: 2,
       name: "Spaghetti Example",
       category: "pasta",
       price: 15,

@@ -5,8 +5,6 @@ const OrdersUpdateService = require("../services/orders/OrdersUpdateService")
 const OrdersDeleteService = require("../services/orders/OrdersDeleteService")
 
 class OrdersController {
-  // ordersRepository = new OrdersRepository()
-
   async create(request, response) {
     const { dishID, quantity } = request.body
     const { id: userID } = request.user
