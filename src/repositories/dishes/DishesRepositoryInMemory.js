@@ -52,6 +52,23 @@ class DishesRepositoryInMemory {
 
     return filteredDishes
   }
+
+  async update(dishID, dish) {
+    const updatedDishes = this.dishes.map((arrayDish) => {
+      if (arrayDish.id === dishID) {
+        return {
+          id: arrayDish.id,
+          ...dish
+        }
+      } else {
+        return arrayDish
+      }
+    })
+
+    this.dishes = updatedDishes
+
+    return this.findByID(dishID)
+  }
 }
 
 module.exports = DishesRepositoryInMemory

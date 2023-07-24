@@ -12,5 +12,6 @@ router.use(ensureAuthenticated)
 router.get("/", dishesController.index)
 router.post("/", dishesController.create)
 router.get("/:dishID", dishesController.show)
+router.put("/:dishID", dishesController.update)
 
 module.exports = router

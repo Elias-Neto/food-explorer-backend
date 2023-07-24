@@ -24,6 +24,16 @@ class DishesRepository {
 
     return dishes
   }
+
+  async update(dishID, dish) {
+    const updated_at = knex.fn.now()
+
+    await knex('dishes')
+      .update({ ...dish, updated_at })
+      .where({ id: dishID })
+
+    return this.findByID(dishID)
+  }
 }
 
 module.exports = DishesRepository

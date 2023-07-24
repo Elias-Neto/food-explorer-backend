@@ -10,12 +10,18 @@ class IngredientsRepositoryInMemory {
   async insert(ingredient) {
     const insertIngredient = {
       id: Math.floor(Math.random() * 1000) + 1,
-      ...ingredient
+      ...ingredient,
     }
 
     this.ingredients.push(insertIngredient)
 
     return this.findByID(insertIngredient.id)
+  }
+
+  async deleteByDishID(dishID) {
+    this.ingredients = this.ingredients.filter((ingredient) => ingredient.dish_id !== dishID)
+
+    return this.ingredients
   }
 }
 

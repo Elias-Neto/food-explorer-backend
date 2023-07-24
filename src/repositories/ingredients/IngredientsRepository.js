@@ -12,6 +12,10 @@ class IngredientsRepository {
 
     return this.findByID(ingredientID)
   }
+
+  async deleteByDishID(dishID) {
+    await knex("ingredients").where({ dish_id: dishID }).del()
+  }
 }
 
 module.exports = IngredientsRepository
