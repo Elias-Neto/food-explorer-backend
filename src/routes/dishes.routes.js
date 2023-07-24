@@ -13,5 +13,6 @@ router.get("/", dishesController.index)
 router.post("/", dishesController.create)
 router.get("/:dishID", dishesController.show)
 router.put("/:dishID", dishesController.update)
+router.delete("/:dishID", dishesController.delete)
 
 module.exports = router

@@ -3,6 +3,7 @@ const DishesRepository = require("../repositories/dishes/DishesRepository")
 const DishesIndexService = require("../services/dishes/DishesIndexService")
 const DishesCreateService = require("../services/dishes/DishesCreateService")
 const DishesUpdateService = require("../services/dishes/DishesUpdateService")
+const DishesDeleteService = require("../services/dishes/DishesDeleteService")
 const IngredientsRepository = require("../repositories/ingredients/IngredientsRepository")
 
 class DishesController {
@@ -63,6 +64,17 @@ class DishesController {
     })
 
     return response.json(dish)
+  }
+
+  async delete(request, response) {
+    const { dishID } = request.params
+
+    const dishesRepository = new DishesRepository()
+    const dishesDeleteService = new DishesDeleteService(dishesRepository)
+
+    await dishesDeleteService.execute(dishID)
+
+    return response.status(204).send()
   }
 }
 

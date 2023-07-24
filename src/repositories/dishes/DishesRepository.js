@@ -34,6 +34,10 @@ class DishesRepository {
 
     return this.findByID(dishID)
   }
+
+  async delete(dishID) {
+    await knex("dishes").where({ id: dishID }).del()
+  }
 }
 
 module.exports = DishesRepository

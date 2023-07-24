@@ -69,6 +69,10 @@ class DishesRepositoryInMemory {
 
     return this.findByID(dishID)
   }
+
+  async delete(dishID) {
+    this.dishes = this.dishes.filter((dish) => dish.id !== dishID)
+  }
 }
 
 module.exports = DishesRepositoryInMemory
