@@ -7,6 +7,12 @@ class IngredientsRepository {
     return ingredient
   }
 
+  async findByDishID(dishID) {
+    const ingredients = await knex("ingredients").where({ dish_id: dishID })
+
+    return ingredients
+  }
+
   async insert(ingredient) {
     const [ingredientID] = await knex("ingredients").insert(ingredient)
 

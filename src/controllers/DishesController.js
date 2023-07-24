@@ -40,7 +40,8 @@ class DishesController {
     const { dishID } = request.params
 
     const dishesRepository = new DishesRepository()
-    const dishesShowService = new DishesShowService(dishesRepository)
+    const ingredientsRepository = new IngredientsRepository()
+    const dishesShowService = new DishesShowService(dishesRepository, ingredientsRepository)
 
     const dish = await dishesShowService.execute(dishID)
 

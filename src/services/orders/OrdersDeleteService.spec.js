@@ -2,7 +2,7 @@ const OrdersDeleteService = require("./OrdersDeleteService")
 const OrdersCreateService = require("./OrdersCreateService")
 const OrdersRepositoryInMemory = require("../../repositories/orders/OrdersRepositoryInMemory")
 
-describe.only("OrdersDeleteService", () => {
+describe("OrdersDeleteService", () => {
   let ordersDeleteService
   let ordersCreateService
   let ordersRepositoryInMemory

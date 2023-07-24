@@ -1,12 +1,18 @@
 class DishesShowService {
-  constructor(dishesRepository) {
+  constructor(dishesRepository, ingredientsRepository) {
     this.dishesRepository = dishesRepository
+    this.ingredientsRepository = ingredientsRepository
   }
 
   async execute(dishID) {
     const dish = await this.dishesRepository.findByID(dishID)
 
-    return dish
+    const ingredients = await this.ingredientsRepository.findByDishID(dishID)
+
+    return {
+      ...dish,
+      ingredients
+    }
   }
 }
 

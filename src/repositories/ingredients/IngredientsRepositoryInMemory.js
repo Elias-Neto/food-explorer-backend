@@ -7,6 +7,12 @@ class IngredientsRepositoryInMemory {
     return ingredient
   }
 
+  async findByDishID(dishID) {
+    const ingredients = this.ingredients.filter((ingredient) => ingredient.dish_id === dishID)
+
+    return ingredients
+  }
+
   async insert(ingredient) {
     const insertIngredient = {
       id: Math.floor(Math.random() * 1000) + 1,

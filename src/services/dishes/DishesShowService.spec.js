@@ -1,13 +1,17 @@
 const DishesShowService = require("./DishesShowService")
 const DishesRepositoryInMemory = require("../../repositories/dishes/DishesRepositoryInMemory")
+const IngredientsRepositoryInMemory = require("../../repositories/ingredients/IngredientsRepositoryInMemory")
 
-describe.only("DishesShowService", () => {
+
+describe("DishesShowService", () => {
   let dishesShowService
   let dishesRepositoryInMemory
+  let ingredientsRepositoryInMemory
 
   beforeEach(() => {
     dishesRepositoryInMemory = new DishesRepositoryInMemory()
-    dishesShowService = new DishesShowService(dishesRepositoryInMemory)
+    ingredientsRepositoryInMemory = new IngredientsRepositoryInMemory()
+    dishesShowService = new DishesShowService(dishesRepositoryInMemory, ingredientsRepositoryInMemory)
   })
 
   const dishID = 1
@@ -17,5 +21,6 @@ describe.only("DishesShowService", () => {
 
     expect(dish).toHaveProperty("id")
     expect(dish.name).toBe("Salada Example")
+    expect(dish).toHaveProperty("ingredients")
   })
 })
