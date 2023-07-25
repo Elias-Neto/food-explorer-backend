@@ -13,15 +13,15 @@ class OrdersRepository {
     return this.findByID(orderID)
   }
 
-  async findByUserID(userID) {
+  async fetchByUserID(userID) {
     const orders = await knex('orders')
       .select([
         'orders.id',
         'orders.quantity',
-        'dishes.id as dish_id',
-        'dishes.name as dish_name',
-        'dishes.price as dish_price',
-        'dishes.photo as dish_photo',
+        'dishes.id as dishID',
+        'dishes.name as dishName',
+        'dishes.price as dishPrice',
+        'dishes.photo as dishPhoto',
       ])
       .innerJoin('dishes', 'dishes.id', 'orders.dish_id')
       .where({ user_id: userID })
@@ -41,6 +41,10 @@ class OrdersRepository {
 
   async delete(orderID) {
     await knex("orders").where({ id: orderID }).delete()
+  }
+
+  async deleteByUserID(userID) {
+    await knex("orders").where({ user_id: userID }).delete()
   }
 }
 

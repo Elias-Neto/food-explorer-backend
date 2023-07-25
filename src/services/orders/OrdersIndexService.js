@@ -4,7 +4,7 @@ class OrdersIndexService {
   }
 
   async execute(userID) {
-    const orders = await this.ordersRepository.findByUserID(userID)
+    const orders = await this.ordersRepository.fetchByUserID(userID)
 
     const ordersWithSubtotal = orders.map(order => {
       order.subtotal = order.quantity * order.dish_price

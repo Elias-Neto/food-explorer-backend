@@ -17,21 +17,10 @@ class OrdersRepositoryInMemory {
     return order
   }
 
-  async insert(order) {
-    const insertOrder = {
-      id: Math.floor(Math.random() * 1000) + 1,
-      ...order
-    }
+  async fetchByUserID(userID) {
+    const userOrders = this.orders.filter((order) => order.user_id === userID)
 
-    this.orders.push(insertOrder)
-
-    return await this.findByID(insertOrder.id)
-  }
-
-  async findByUserID(userID) {
-    const defaultDishes = this.orders.filter((order) => order.user_id === userID)
-
-    const ordersWithDishes = defaultDishes.map((order) => {
+    const mappedOrders = userOrders.map((order) => {
       const dish = this.dishes.find((dish) => dish.id === order.dish_id)
 
       return {
@@ -44,7 +33,18 @@ class OrdersRepositoryInMemory {
       }
     })
 
-    return ordersWithDishes
+    return mappedOrders
+  }
+
+  async insert(order) {
+    const insertOrder = {
+      id: Math.floor(Math.random() * 1000) + 1,
+      ...order
+    }
+
+    this.orders.push(insertOrder)
+
+    return await this.findByID(insertOrder.id)
   }
 
   async update(orderID, quantity) {
@@ -63,6 +63,10 @@ class OrdersRepositoryInMemory {
 
   async delete(orderID) {
     this.orders = this.orders.filter((order) => order.id !== orderID)
+  }
+
+  async deleteByUserID(userID) {
+    this.orders = this.orders.filter((order) => order.user_id !== userID)
   }
 }
 
