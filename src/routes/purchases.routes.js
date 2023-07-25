@@ -9,6 +9,7 @@ const router = Router()
 
 router.use(ensureAuthenticated)
 
+router.get("/", purchasesController.index)
 router.post("/", purchasesController.create)
 
 module.exports = router
