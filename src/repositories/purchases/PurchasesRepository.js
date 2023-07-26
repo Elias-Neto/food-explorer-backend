@@ -24,6 +24,16 @@ class PurchasesRepository {
       return await knex("purchases").where({ user_id: userID })
     }
   }
+
+  async update(purchaseID, status) {
+    const purchase = await this.findByID(purchaseID)
+
+    const updatedPurchase = { ...purchase, status }
+
+    await knex("purchases").where({ id: purchase.id }).update(updatedPurchase)
+
+    return this.findByID(purchase.id)
+  }
 }
 
 module.exports = PurchasesRepository

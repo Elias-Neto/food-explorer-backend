@@ -11,5 +11,6 @@ router.use(ensureAuthenticated)
 
 router.get("/", purchasesController.index)
 router.post("/", purchasesController.create)
+router.put("/:purchaseID", purchasesController.update)
 
 module.exports = router

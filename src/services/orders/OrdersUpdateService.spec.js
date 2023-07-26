@@ -23,7 +23,7 @@ describe("OrdersUpdateService", () => {
     quantity: 1,
   }
 
-  it("Order should be updated", async () => {
+  it("Order quantity should be updated", async () => {
     const { id: orderID } = await ordersCreateService.execute(createOrder)
 
     const order = await ordersUpdateService.execute(orderID, requestBody.quantity)

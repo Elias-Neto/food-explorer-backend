@@ -1,7 +1,7 @@
 const PurchasesIndexService = require("./PurchasesIndexService")
 const PurchasesRepositoryInMemory = require("../../repositories/purchases/PurchasesRepositoryInMemory")
 
-describe.only("PurchasesIndexService", () => {
+describe("PurchasesIndexService", () => {
   let purchasesIndexService
   let purchasesRepositoryInMemory
 

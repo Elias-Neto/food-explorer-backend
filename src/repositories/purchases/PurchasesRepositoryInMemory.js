@@ -39,7 +39,8 @@ class PurchasesRepositoryInMemory {
   async insert(purchase) {
     const insertPurchase = {
       id: Math.floor(Math.random() * 1000) + 1,
-      ...purchase
+      ...purchase,
+      status: "pending"
     }
 
     this.purchases.push(insertPurchase)
@@ -55,6 +56,23 @@ class PurchasesRepositoryInMemory {
     } else {
       return this.purchases.filter(purchase => purchase.user_id === userID)
     }
+  }
+
+  async update(purchaseID, status) {
+    const purchase = await this.findByID(purchaseID)
+
+    const updatedPurchases = this.purchases.map(arrayPurchase => {
+      if (arrayPurchase.id === purchaseID) {
+        return {
+          ...purchase,
+          status
+        }
+      }
+    })
+
+    this.purchases = updatedPurchases
+
+    return this.findByID(purchaseID)
   }
 }
 

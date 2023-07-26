@@ -18,7 +18,6 @@ class PurchasesCreateService {
 
     const purchase = await this.purchasesRepository.insert({
       user_id: userID,
-      status: "pending",
       details: reducedDetails.slice(0, -2),
     })
 

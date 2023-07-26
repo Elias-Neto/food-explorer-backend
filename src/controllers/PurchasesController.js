@@ -2,6 +2,7 @@ const OrdersRepository = require("../repositories/orders/OrdersRepository")
 const PurchasesRepository = require("../repositories/purchases/PurchasesRepository")
 const PurchasesIndexService = require("../services/purchases/PurchasesIndexService")
 const PurchasesCreateService = require("../services/purchases/PurchasesCreateService")
+const PurchasesUpdateService = require("../services/purchases/PurchasesUpdateService")
 
 class PurchasesController {
   async create(request, response) {
@@ -25,6 +26,18 @@ class PurchasesController {
     const purchases = await purchasesIndexService.execute(Number(userID))
 
     return response.json(purchases)
+  }
+
+  async update(request, response) {
+    const { purchaseID } = request.params
+    const { status } = request.body
+
+    const purchasesRepository = new PurchasesRepository()
+    const purchasesUpdateService = new PurchasesUpdateService(purchasesRepository)
+
+    await purchasesUpdateService.execute(Number(purchaseID), status)
+
+    return response.status(204).send()
   }
 }
 
