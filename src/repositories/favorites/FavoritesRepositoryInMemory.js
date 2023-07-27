@@ -1,10 +1,22 @@
 class FavoritesRepositoryInMemory {
-  favorites = []
+  favorites = [
+    {
+      id: 1,
+      user_id: 1,
+      dish_id: 1
+    }
+  ]
 
   async findByID(id) {
     const favorite = this.favorites.find((favorite) => favorite.id === id)
 
     return favorite
+  }
+
+  async findByUserID(userID) {
+    const favorites = this.favorites.filter((favorite) => favorite.user_id === userID)
+
+    return favorites
   }
 
   async insert(favorite) {

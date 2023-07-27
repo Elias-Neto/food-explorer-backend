@@ -1,4 +1,5 @@
 const FavoritesRepository = require("../repositories/favorites/FavoritesRepository")
+const FavoritesIndexService = require("../services/favorites/FavoritesIndexService")
 const FavoritesCreateService = require("../services/favorites/FavoritesCreateService")
 
 class FavoritesController {
@@ -9,12 +10,23 @@ class FavoritesController {
     const favoritesRepository = new FavoritesRepository()
     const favoritesCreateService = new FavoritesCreateService(favoritesRepository)
 
-    console.log("dishID", dishID)
-    console.log("userID", userID)
+      ("dishID", dishID)
+      ("userID", userID)
 
     const favorite = await favoritesCreateService.execute(Number(userID), dishID)
 
     return response.status(201).json(favorite)
+  }
+
+  async index(request, response) {
+    const { id: userID } = request.user
+
+    const favoritesRepository = new FavoritesRepository()
+    const favoritesIndexService = new FavoritesIndexService(favoritesRepository)
+
+    const favorites = await favoritesIndexService.execute(Number(userID))
+
+    return response.json(favorites)
   }
 }
 

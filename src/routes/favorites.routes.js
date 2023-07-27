@@ -9,6 +9,7 @@ const router = Router()
 
 router.use(ensureAuthenticated)
 
+router.get("/", favoritesController.index)
 router.post("/", favoritesController.create)
 
 module.exports = router

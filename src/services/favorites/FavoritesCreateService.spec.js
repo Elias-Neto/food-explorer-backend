@@ -1,7 +1,7 @@
 const FavoritesCreateService = require("./FavoritesCreateService")
 const FavoritesRepositoryInMemory = require("../../repositories/favorites/FavoritesRepositoryInMemory")
 
-describe.only("FavoritesCreateService", () => {
+describe("FavoritesCreateService", () => {
   let favoritesCreateService
   let favoritesRepositoryInMemory
 

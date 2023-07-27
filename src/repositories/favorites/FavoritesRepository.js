@@ -7,8 +7,14 @@ class FavoritesRepository {
     return favorite
   }
 
+  async findByUserID(userID) {
+    const favorites = await knex("favorites").where({ user_id: userID })
+
+    return favorites
+  }
+
   async insert(favorite) {
-    console.log(favorite)
+    (favorite)
     const [id] = await knex("favorites").insert(favorite)
 
     return this.findByID(id)
