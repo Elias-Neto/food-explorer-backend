@@ -19,6 +19,10 @@ class FavoritesRepository {
 
     return this.findByID(id)
   }
+
+  async delete(favoriteID) {
+    await knex("favorites").where({ id: favoriteID }).delete()
+  }
 }
 
 module.exports = FavoritesRepository

@@ -11,5 +11,6 @@ router.use(ensureAuthenticated)
 
 router.get("/", favoritesController.index)
 router.post("/", favoritesController.create)
+router.delete("/:favoriteID", favoritesController.delete)
 
 module.exports = router

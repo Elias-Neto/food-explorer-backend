@@ -7,8 +7,8 @@ class FavoritesRepositoryInMemory {
     }
   ]
 
-  async findByID(id) {
-    const favorite = this.favorites.find((favorite) => favorite.id === id)
+  async findByID(favoriteID) {
+    const favorite = this.favorites.find((favorite) => favorite.id === favoriteID)
 
     return favorite
   }
@@ -30,6 +30,10 @@ class FavoritesRepositoryInMemory {
     const insertedFavorite = await this.findByID(insertFavorite.id)
 
     return insertedFavorite
+  }
+
+  async delete(favoriteID) {
+    this.favorites = this.favorites.filter((favorite) => favorite.id !== favoriteID)
   }
 }
 
