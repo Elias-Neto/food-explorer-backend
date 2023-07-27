@@ -1,4 +1,5 @@
 require("express-async-errors")
+const cors = require("cors")
 
 const express = require("express")
 const uploadConfig = require('./configs/upload');
@@ -7,6 +8,9 @@ const AppError = require("./utils/AppError")
 const routes = require("./routes")
 
 const app = express()
+
+// Use Cors
+app.use(cors())
 
 // Use Body Parser JSON Middleware
 app.use(express.json())
