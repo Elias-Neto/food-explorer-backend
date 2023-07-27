@@ -1,9 +1,10 @@
+require('dotenv/config')
 require("express-async-errors")
+
 const cors = require("cors")
-
 const express = require("express")
-const uploadConfig = require('./configs/upload');
 
+const uploadConfig = require('./configs/upload')
 const AppError = require("./utils/AppError")
 const routes = require("./routes")
 
@@ -19,7 +20,7 @@ app.use(express.json())
 app.use(routes)
 
 // Files Visualize Route
-app.use('/files', express.static(uploadConfig.UPLOADS_FOLDER));
+app.use('/files', express.static(uploadConfig.UPLOADS_FOLDER))
 
 // Use Error Handler
 app.use((error, request, response, next) => {
